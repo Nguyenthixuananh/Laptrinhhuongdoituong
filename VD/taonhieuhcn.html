@@ -31,14 +31,12 @@ có phương thức Thay đổi CD, thay đổi CR, tính Chu vi, Tính diện t
             return (this.length + this.width) * 2;
         }
         draw(ctx) {
+            ctx.beginPath()
             ctx.rect(this.x, this.y, this.length, this.width)
-            ctx.fillStyle = this.color
-            ctx.fill()
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.closePath();
         }
-
-
-
-
     }
     let l = +prompt("Enter the length")
     let w = +prompt("Enter the width")
