@@ -7,16 +7,22 @@
 <body>
 <!--Viết class HCN, có CD, CR,
 có phương thức Thay đổi CD, thay đổi CR, tính Chu vi, Tính diện tích, vẽ ra canvas.-->
-<canvas id="hcn" width="500" height="700" style="color: red"></canvas>
+<canvas id="hcn" width="500" height="700" ></canvas>
 <script>
 
 
     class Rectangle {
         length;
         width;
-        constructor(length, width) {
+        x;
+        y;
+        color;
+        constructor(length, width, x, y, color) {
             this.length = length;
             this.width = width;
+            this.x = x;
+            this.y = y;
+            this.color = color;
         }
         getArea() {
             return this.length * this.width;
@@ -25,7 +31,8 @@ có phương thức Thay đổi CD, thay đổi CR, tính Chu vi, Tính diện t
             return (this.length + this.width) * 2;
         }
         draw(ctx) {
-            ctx.rect(100,100,this.length,this.width);
+            ctx.rect(this.x, this.y, this.length, this.width)
+            ctx.fillStyle = this.color
             ctx.fill()
         }
 
@@ -40,13 +47,12 @@ có phương thức Thay đổi CD, thay đổi CR, tính Chu vi, Tính diện t
     let perimeter = rectangle.getPerimeter()
     alert("Area of a rectangle is " + area + " and Perimeter of a rectangle is " +perimeter)
     let ctx = document.getElementById('hcn').getContext('2d');
-    // rectangle.draw(ctx)
-    function createRectangle() {
-        for (let i = 0; i < 10; i++) {
-            rectangle.draw(ctx);
-        }
+    for (let i= 0; i<10; i++) {
+        let x = Math.random()*500;
+        let y = Math.random()*700;
+        let rect = new Rectangle(l, w, x, y, "Red");
+        rect.draw(ctx)
     }
-    createRectangle();
 
 </script>
 </body>
